@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora IMC</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-image: url("https://img.freepik.com/vetores-gratis/gradiente-azul-rosa_78370-260.jpg?size=626&ext=jpg&ga=GA1.1.34264412.1698796800&semt=ais"); /* Replace with your background image URL */
+        background-size: cover;
+        background-position: center;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      #calculator {
+        background: rgba(176, 224, 230);
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 24px;
+        font-family: "Times New Roman", Times, serif;
+        color: blue;
+      }
+
+      label,
+      input,
+      button {
+        display: block;
+        margin: 10px;
+      }
+
+      input[type="number"],
+      button {
+        padding: 5px;
+        font-size: 16px;
+      }
+
+      button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 26%;
+        margin-top: 25px;
+
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      #result-container {
+        display: none;
+      }
+
+      #imc-result {
+        font-weight: bold;
+        color: #ffa500;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="calculator">
+      <h1>Calculadora IMC</h1>
+      <label for="weight">Peso (kg):</label>
+      <input
+        type="number"
+        id="weight"
+        placeholder="Coloque seu Peso"
+        min="1"
+        required
+      />
+      <label for="height">Altura (cm):</label>
+      <input
+        type="number"
+        id="height"
+        placeholder="Coloque sua Altura"
+        min="1"
+        required
+      />
+      <button id="calculate-btn">Calcular</button>
+      <div id="result-container">
+        <p>Seu IMC é: <span id="imc-result"></span></p>
+      </div>
+    </div>
+
+    <script>
+      const weightInput = document.getElementById("weight");
+      const heightInput = document.getElementById("height");
+      const calculateButton = document.getElementById("calculate-btn");
+      const resultContainer = document.getElementById("result-container");
+      const imcResult = document.getElementById("imc-result");
+
+      calculateButton.addEventListener("click", function () {
+        const weight = parseFloat(weightInput.value);
+        const height = parseFloat(heightInput.value) / 100; // Convert height to meters
+        const imc = weight / (height * height);
+
+        resultContainer.style.display = "block";
+        imcResult.textContent = imc.toFixed(2);
+      });
+    </script>
+  </body>
+</html>
